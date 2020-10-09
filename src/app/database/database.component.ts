@@ -20,4 +20,20 @@ export class DatabaseComponent implements OnInit {
     this.database.getListInfo().subscribe(data => this.people = data);
   }
   
+  update(id, lastName, firstName, email, comments, option) {
+
+    let lastname  = { lastName : lastName };
+    let firstname = { firstName: firstName };
+    let Email     = { email    : email };
+    let Comments  = { comments : comments };
+    let Option    = { options  : option };
+
+    console.log(lastName, firstName, Email, Comments);
+
+    this.database.update(id, lastname, firstname, Email, Comments, Option);
+  }
+
+  delete(id){
+    this.database.delete(id);
+  }
 }

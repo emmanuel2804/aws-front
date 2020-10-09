@@ -9,15 +9,19 @@
       <th>Email</th>
       <th>Comments</th>
       <th>Preference</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let person of people" >
-      <td class="vert-align">{{person.lastName}}</td>
-      <td class="vert-align">{{person.firstName}}</td>
-      <td class="vert-align">{{person.email}}</td>
-      <td class="vert-align">{{person.comments}}</td>
-      <td class="vert-align">{{person.options}}</td>
+      <td class="vert-align" contenteditable="true">{{person.lastName}}</td>
+      <td class="vert-align" contenteditable="true"> {{person.firstName}}</td>
+      <td class="vert-align" contenteditable="true">{{person.email}}</td>
+      <td class="vert-align" contenteditable="true">{{person.comments}}</td>
+      <td class="vert-align" contenteditable="true">{{person.options}}</td>
+      <td><button type="button" data-toggle="modal" (click)="update(person.id, person.lastName, person.firstName, person.email, person.comments, person.option)" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
+		  <td><button type="button" data-toggle="modal" (click)="delete(person.id)" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></td>
     </tr>
     </tbody>
   </table>

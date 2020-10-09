@@ -36,10 +36,22 @@ interface Iperson{
    }
 
    getInfo(id: number) : Observable<Iperson>{
-     return this.http.get<Iperson>(this.API_URL + id);
+    return this.http.get<Iperson>(this.API_URL + id);
    }
    getListInfo() : Observable<[Iperson]>{
     return this.http.get<[Iperson]>(this.API_URL);
-  }
+   }
+   update(id, lastName, firstName, email, comments, option): Observable<Iperson> {
 
+    let headers = new HttpHeaders({'Content-Type' : 'application/json'});
+    let options = { headers: headers};
+    let INFO =  Object.assign(lastName, firstName, email, comments, option);
+    let body = JSON.stringify(INFO);
+    console.log("update_ok");
+    return this.http.put<Iperson>(this.API_URL + id, body, options);
+   }
+   delete(id): Observable<Iperson> {
+    console.log("delete_ok");
+    return this.http.delete<Iperson>(this.API_URL + id);
+   }
  }
